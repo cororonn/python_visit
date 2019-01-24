@@ -12,4 +12,3 @@ class template():
         print("_(:3」∠)_ぐでーん")
 template()
 
-
