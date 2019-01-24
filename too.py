@@ -4,7 +4,7 @@ from Crypto.Cipher import AES
 from hashlib import sha256
 
 class AESCC(object):
-    def __init__ (self, key, block_size~32):
+    def __init__ (self, key, block_size=32):
             self.bs = block_size
             if len(key) >= len(str(block_size)):
                 self.key = key[:block_size]
