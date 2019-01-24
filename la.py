@@ -6,3 +6,11 @@ def c():
         print(t)
 c()
 
+
+class template():
+    def __init__(self):
+        print("n")
+template()
+
+# complete file 
+
