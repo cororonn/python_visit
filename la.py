@@ -9,7 +9,7 @@ c()
 
 class template():
     def __init__(self):
-        print("n")
+        print("_(:3」∠)_ぐでーん")
 template()
 
-# complete file 
+
