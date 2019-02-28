@@ -1,7 +1,11 @@
-import subprocess
+import numpy as np
+import pandas as pd
 
-a = "python lli.py"
+df = pd.DataFrame([["100","200","300"]],columns=["a","b","c"],
+index=["a","b"])
 
-subprocess.call(a.split())
+print("df")
 
-i
+def AAA():
+    print("aaaaaa")
+AAA()

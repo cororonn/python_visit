@@ -7,11 +7,11 @@ b = (0,0,255)
 
 pygame.init()
 screen = pygame.display.set_mode((w,h))
-myclock = pygame.timeClock()
+myclock = pygame.time.Clock()
 
 class Spclass(pygame.sprite.Sprite):
     def __init__(self):
-        pygame.sprite.Sprite.__init__(self):
+        pygame.sprite.Sprite.__init__(self)
 
         self.image = \
             pygame.image.load("man.png").convert()
@@ -26,24 +26,24 @@ class Spclass(pygame.sprite.Sprite):
 
     def update(self):
         self.rect.centerx += self.x1
-        self.rect.centery += self y1
+        self.rect.centery += self.y1
         if self.rect.centerx >= \
             w or self.rect.centerx < 0:
             self.x1 = -self.x1
 
-    allgroup = pygame.sprite.Group()
-    for i in range(100):
-        allgroup.add(Spclass())
-    endflag = 0
+allgroup = pygame.sprite.Group()
+for i in range(100):
+    allgroup.add(Spclass())
+endflag = 0
 
-    while endflag ==0:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT: endflag = 1
+while endflag ==0:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT: endflag = 1
         
-        screen.fill(b)
+    screen.fill(b)
 
-        allgroup.update()
-        allgroup.draw(screen)
-        myclock.tick(60)
-        pygame.display.flip()
+    allgroup.update()
+    allgroup.draw(screen)
+    myclock.tick(60)
+    pygame.display.flip()
 pygame.quit()
