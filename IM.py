@@ -1,4 +1,5 @@
-import neto
+print("Hello")
 
-print("ok")
-
+def KX():
+    print("200")
+KX()
