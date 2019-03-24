@@ -1,5 +1,4 @@
-print("Hello")
+def Integer():
+    print("Hello")
+Integer()
 
-def KX():
-    print("200")
-KX()
