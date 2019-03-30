@@ -1,0 +1,8 @@
+{
+    "name":"test_bot",
+    "main":"C:/Users/sakuw/OneDrive/desktop/TEST/python_visit",
+    "python": {
+        "build":"bot"
+    }
+
+}
