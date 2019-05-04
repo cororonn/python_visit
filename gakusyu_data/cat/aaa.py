@@ -2,14 +2,14 @@ import sys
 import tensorflow as tf
 
 def read_csv(csvfile):
-    fname_queue = tf.train.string_input_producer([csvfile])
+    cat_queue = tf.train.string_input_producer([csvfile])
     reader = tf.TextLineReader()
-    key, val = reader.read(fname_queue)
-    fname, label = tf.decode_csv(val, [["aa"], [1]])
-    return read_img(fname)
+    key, val = reader.read(cat_queue)
+    cat, label = tf.decode_csv(val, [["aa"], [1]])
+    return read_img(cat)
 
 def read_img(fname):
-    img_r = tf.read_file(fname)
+    img_r = tf.read_file(cat)
     return tf.image.decode_image(img_r, channels=3)
 
 def main():
@@ -31,3 +31,15 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+x = tf.placeholder(tf.float32,[None,input_size],name="input_data")
+ 
+#画像読込
+jpg = tf.read_file("cat/100. milesf3john-1200x1095.jpg")
+image = tf.image.decode_jpeg(jpg, channels=1)
+ 
+with tf.Session() as sess:
+ 
+  input_image = sess.run(image)
+  sess.run(train_grad, feed_dict={x:input_image})
