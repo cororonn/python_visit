@@ -3,12 +3,7 @@ import numpy as np
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
 
-"""
-val_x_data = np.random.uniform(0, 1, (60000, 32, 32))
-val_y_data = np.random.randint(0, 5, (60000))
 
-print(val_x_data.shape, val_y_data.shape)
-"""
 num_friends = [100,49,41,40,25,60]
 
 
