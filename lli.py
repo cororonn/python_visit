@@ -75,14 +75,14 @@ class Box(Spclass):
 
 bgdata = [
     "11111111111111111111",
-    "1 1       1   1    1",
-    "1   11111   111  111",
-    "1    11111  1111 111",
-    "1    11111  1111  11",
-    "1    1111   1111  11",
-    "1   11111  11111  11",
-    "1   111111        11",
-    "1    1111    1111 11",
+    "1 1                1",
+    "1    1111   111  111",
+    "1    1111   111  111",
+    "1    1111   111   11",
+    "1    1111   111   11",
+    "1    1111  1111   11",
+    "1    1111         11",
+    "1                 11",
     "11111111111111111111"]
 
 
@@ -98,9 +98,9 @@ for y in range(10):
 
 allgroup = pygame.sprite.Group()
 
-box = Box(size*18, size*10, "bbb.png")
+b = b(size*10, size*5) # "bbb.png"
 
-allgroup.add(box)
+allgroup.add(b)
 player = Player(size*1, size*1, "man.png")
 
 allgroup.add(player)

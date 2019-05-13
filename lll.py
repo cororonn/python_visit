@@ -1,10 +1,18 @@
-import pandas as pd
+print("===========")
 
-with ZipFile(zip_file) as z:
-  with z.open('AirQualityUCI.xlsx') as f:
-    air_quality = pd.read_excel(
-      f,
-      index_col=0, parse_dates={'DateTime': [0, 1]}, #1
-      na_values=[-200.0],                            #2
-      convert_float=False                            #3
-    )
+
+def ill():
+
+	l = ["100","200","300"]
+	for i in l:
+		print(i)
+if __name__ == "__main__":
+	ill()
+
+class A_test():
+	def under_weare(self):
+		print("るんるん気分～(*´ω｀*)")
+
+a = A_test()
+a.under_weare()
+
