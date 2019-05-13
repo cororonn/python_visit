@@ -1,33 +1,57 @@
-import sys
+from __future__ import absolute_import, division, print_function, unicode_literals
+
 import tensorflow as tf
+from tensorflow import keras
 
-def read_csv(csvfile):
-    fname_queue = tf.train.string_input_producer([csvfile])
-    reader = tf.TextLineReader()
-    key, val = reader.read(fname_queue)
-    fname, label = tf.decode_csv(val, [["aa"], [1]])
-    return read_img(fname)
+import numpy as np
+import matplotlib.pyplot as plt
 
-def read_img(fname):
-    img_r = tf.read_file(fname)
-    return tf.image.decode_image(img_r, channels=3)
+NUM_WORDS = 10000
 
-def main():
-    argv = sys.argv
-    argc = len(argv)
-    if (argc < 2):
-        print('Usage: python %s csvfile' %argv[0])
-        quit()
+(train_data, train_labels), (test_data, test_labels) = keras.datasets.imdb.load_data(num_words=NUM_WORDS)
 
-    image = read_csv(argv[1])
+def multi_hot_sequences(sequences, dimension):
+    # 形状が (len(sequences), dimension)ですべて0の行列を作る
+    results = np.zeros((len(sequences), dimension))
+    for i, word_indices in enumerate(sequences):
+        results[i, word_indices] = 1.0  # 特定のインデックスに対してresults[i] を１に設定する
+    return results
 
-    sess = tf.Session()
-    init = tf.initialize_all_variables()
-    sess.run(init)
-    tf.train.start_queue_runners(sess)
-    x = sess.run(image)
 
-    print(x)
+train_data = multi_hot_sequences(train_data, dimension=NUM_WORDS)
+test_data = multi_hot_sequences(test_data, dimension=NUM_WORDS)
 
-if __name__ == '__main__':
-    main()
+print(train_data)
+print(test_data)
+
+smaller_model = keras.Sequential([
+    keras.layers.Dense(4, activation=tf.nn.relu, input_shape=(NUM_WORDS,)),
+    keras.layers.Dense(4, activation=tf.nn.relu),
+    keras.layers.Dense(1, activation=tf.nn.sigmoid)
+])
+
+smaller_model.compile(optimizer='adam',
+                loss='binary_crossentropy',
+                metrics=['accuracy', 'binary_crossentropy'])
+
+smaller_model.summary()
+
+baseline_model = keras.Sequential([
+    # `.summary` を見るために`input_shape`が必要
+    keras.layers.Dense(16, activation=tf.nn.relu, input_shape=(NUM_WORDS,)),
+    keras.layers.Dense(16, activation=tf.nn.relu),
+    keras.layers.Dense(1, activation=tf.nn.sigmoid)
+])
+
+baseline_model.compile(optimizer='adam',
+                       loss='binary_crossentropy',
+                       metrics=['accuracy', 'binary_crossentropy'])
+
+baseline_model.summary()
+
+baseline_history = baseline_model.fit(train_data,
+                                      train_labels,
+                                      epochs=5,
+                                      batch_size=512,
+                                      validation_data=(test_data, test_labels),
+                                      verbose=2)
