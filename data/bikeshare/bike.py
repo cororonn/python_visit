@@ -21,4 +21,3 @@ X = data[["rowid",
 
 y = data["riders"]
 
-print(y)
