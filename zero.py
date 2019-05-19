@@ -1,3 +1,4 @@
+"""
 from __future__ import absolute_import, division, print_function, unicode_literals
 
 import tensorflow as tf
@@ -55,3 +56,5 @@ baseline_history = baseline_model.fit(train_data,
                                       batch_size=512,
                                       validation_data=(test_data, test_labels),
                                       verbose=2)
+"""
+
