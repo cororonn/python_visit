@@ -1,6 +1,10 @@
 import sys
 import tensorflow as tf
 
+
+"""
+
+
 def read_csv(csvfile):
     cat_queue = tf.train.string_input_producer([csvfile])
     reader = tf.TextLineReader()
@@ -43,3 +47,4 @@ with tf.Session() as sess:
  
   input_image = sess.run(image)
   sess.run(train_grad, feed_dict={x:input_image})
+"""
