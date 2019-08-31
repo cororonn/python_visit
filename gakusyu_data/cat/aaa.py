@@ -1,5 +1,15 @@
 import sys
 import tensorflow as tf
+x = tf.reshape(tf.float32,[None,28],name="input_data")
+
+#画像読込
+jpg = tf.read_file("cat/1. 0014.jpg")
+image = tf.image.resize_image_with_crop_or_pad(image, 28, 28)
+
+with tf.Session() as sess:
+
+  input_image = sess.run(image)
+  sess.run(train_grad, feed_dict={x:input_image})
 
 
 """
