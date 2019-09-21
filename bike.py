@@ -2,7 +2,7 @@ import pandas as pd
 
 data = pd.read_csv("bikeshare.csv")
 
-"""
+
 features = [
 
 "date",
@@ -23,7 +23,7 @@ features = [
 "riders",
 ]
 X = data[features]
-y = data.default
+y = data
 
 from yellowbrick.features import Rank1D
 
@@ -33,7 +33,7 @@ visualizer = Rank1D(features=features, algorithm='shapiro')
 visualizer.fit(X, y)                # Fit the data to the visualizer
 visualizer.transform(X)             # Transform the data
 visualizer.poof()
-"""
+
 
 df = load_data("bikeshare")
 feature = "weekday"
