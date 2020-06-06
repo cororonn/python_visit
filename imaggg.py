@@ -78,3 +78,5 @@ if __name__ == "__main__":
             download(input_url + url)
 
     os.remove("collection_url.txt")
+    
+# Hello and Help!
